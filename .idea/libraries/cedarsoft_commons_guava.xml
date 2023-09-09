@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="cedarsoft.commons.guava" type="repository">
+    <properties maven-id="com.cedarsoft.commons:guava:8.9.1" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/guava-8.9.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
