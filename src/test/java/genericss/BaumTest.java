@@ -21,6 +21,7 @@ class BaumTest {
         assertEquals(true,baum.hatElement("a12"));
         assertEquals(false,baum.hatElement("a122"));
         assertEquals(6,anzahlKnoten(baum));
+        assertEquals(7,Baumhelper.tiefenSumme(baum));
 
     }
 }
