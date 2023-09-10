@@ -36,6 +36,20 @@ public class Baumhelper {
 
 
     }
+    /**
+     * Die Methode ist eine Hilfsmethode und sucht die Tiefe eines Knotens in einer Baumstruktur.
+     * Rückgabe:
+     * 1. bei Eingabe @param knoten=null wäre die Ausgabe 0;
+     * 2. beim nicht finden des Knotens in der Baumstruktur ist die Ausgabe auch 0;
+     * sonst immer eine Zahl.
+     * */
+    private static int tiefenVon(Knoten knoten, Knoten aktuellerKnoten){
+
+
+
+
+
+    }
 }
 
 
