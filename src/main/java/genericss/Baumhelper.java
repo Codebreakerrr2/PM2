@@ -41,29 +41,31 @@ public class Baumhelper {
      *    Vorbedingung: 
      * @param knoten darf nicht null sein.
      * Rückgabe:
-     * 1. bei Eingabe @param knoten=null wäre die Ausgabe 0;
-     * 2. beim nicht finden des Knotens in der Baumstruktur ist die Ausgabe auch 0;
+     * 1. beim nicht finden des Knotens in der Baumstruktur ist die Ausgabe auch -1;
      * sonst immer eine Zahl.
      * */
-    private static int tiefenVon(Knoten knoten, Knoten aktuellerKnoten){
-            Preconditions.checkNotNull(knoten,"Knoten ist null!!")
+    private static int tiefenVon(Knoten knoten, Knoten aktuellerKnoten,int tiefe){
+            Preconditions.checkNotNull(knoten,"Knoten ist null!!");
         if(aktuellerKnoten!=null){
                 if(aktuellerKnoten==knoten){
-                    return 1;
-                } else{
-                    int subTiefe= tiefenVon(knoten,aktuellerKnoten.kind1)+tiefenVon(knoten,aktuellerKnoten.kind2)+tiefenVon(knoten,aktuellerKnoten.kind3);
-                    if(subTiefe==0){
-                        return subTiefe;
-                    }else{
-                        return subTiefe+=subTiefe;
-                    }
+                    return tiefe;
+                } else {
+                    int tiefeKind1= tiefenVon(knoten,aktuellerKnoten.kind1,tiefe+1);
+                    int tiefeKind2= tiefenVon(knoten,aktuellerKnoten.kind2,tiefe+1);
+                    int tiefeKind3= tiefenVon(knoten,aktuellerKnoten.kind3,tiefe+1);
+
+                    return Math.max(Math.max(tiefeKind1,tiefeKind2),tiefeKind3);
                 }
+
 
                 
         }
-return 0;
+return -1;
 
 
+    }
+    public static int tiefeVon(Knoten knoten,Baum <?> baum){
+       return tiefenVon(knoten,baum.knoten,0);
     }
 }
 
