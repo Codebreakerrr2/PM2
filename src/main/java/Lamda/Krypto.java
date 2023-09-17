@@ -7,10 +7,7 @@ import java.util.Map;
  * */
 public class Krypto {
 
-    /**
-     * chiffreDatenBank dient zur Speicherung von Chiffre
-     * */
-    private List<Map<Character,Character>> chiffreDatenBank;
+    
     private Ersetzezeichen f;
     private Ersetzezeichen fReverse;
     public Krypto(Ersetzezeichen verschluesseln, Ersetzezeichen entschlusseln){
@@ -22,13 +19,23 @@ public class Krypto {
      * Die Methode verschlüsselt einen text und speichert den chiffer in der chiffreDatenBank
      * */
     public String verschlusseln(String text){
+        String chiffre="";
+        for(int i=0;i<=text.length();i++){
 
-
+            chiffre+=f.ersetzeMit(text.chatAt(i));
+        }
+    return chiffre;
 
     }
 
     public String entschlusseln(String cheffir){
+        String text="";
+        
+ for(int i=0;i<=text.length();i++){
 
+            text+=fReverse.ersetzeMit(text.chatAt(i));
+        }
+        return text;
     }
 
 }
