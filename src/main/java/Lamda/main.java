@@ -12,5 +12,23 @@ public class main {
         System.out.println(identitaetAbbildung.erzetzeMit('a'));
         System.out.println(nachfolgerAbbildung.erzetzeMit('a'));
 
+
+Ersetzezeichen f=(Character buchstabe)-> {
+int changeAlphabet= buchstabe/2;
+  return  (char) changeAlphabet;
+    
+};
+        Ersetzezeichen fReverse=(Character buchstabe)-> {
+    int changeAlphabet= buchstabe*2;
+            return (char) changeAlphabet;
+            
+        };
+        
+        Krypto krypto=new Krypto(f,fReverse);
+        String text="die Aliens sind noch da";
+        String chiffre=krypto.verschlusseln(text);
+        String entschlusseln= krypto.entschlusseln(chiffre);
+        
+
     }
 }
