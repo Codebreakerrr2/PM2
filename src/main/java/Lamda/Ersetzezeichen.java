@@ -3,5 +3,5 @@ package Lamda;
 
 @FunctionalInterface
 public  interface Ersetzezeichen {
-    char erzetzeMit(char Buchstabe);
+    char ersetzeMit(char Buchstabe);
 }

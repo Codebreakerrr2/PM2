@@ -20,9 +20,9 @@ public class Krypto {
      * */
     public String verschlusseln(String text){
         String chiffre="";
-        for(int i=0;i<=text.length();i++){
+        for(int i=0;i<text.length();i++){
 
-            chiffre+=f.ersetzeMit(text.chatAt(i));
+            chiffre+=f.ersetzeMit(text.charAt(i));
         }
     return chiffre;
 
@@ -31,9 +31,9 @@ public class Krypto {
     public String entschlusseln(String cheffir){
         String text="";
         
- for(int i=0;i<=text.length();i++){
+ for(int i=0;i<cheffir.length();i++){
 
-            text+=fReverse.ersetzeMit(text.chatAt(i));
+            text+=fReverse.ersetzeMit(cheffir.charAt(i));
         }
         return text;
     }
