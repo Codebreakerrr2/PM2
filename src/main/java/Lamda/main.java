@@ -1,8 +1,10 @@
 package Lamda;
 
-import org.w3c.dom.ls.LSOutput;
 
-import java.sql.SQLOutput;
+
+
+
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
@@ -49,14 +51,16 @@ public class main {
             return zahl < 0 ? -1 * zahl : zahl;
         };
         System.out.println(betrag.apply(1));
-
+        var name= Arrays.asList("aasd","bddddd","caaa");
+        name.replaceAll(bedingteGrossBuchstabe(s->s.length()>4));
+        name.forEach(System.out::println);
 
     }
 public static void verarbeite(List<Integer> list){
         list.forEach(zahl-> System.out.println("Zahl: "+(zahl + 7) % 3));
 }
-public static void bedingteGrossBuchstabe(Predicate<String> bedingung){
-        return bedingung.test()
+public static UnaryOperator<String> bedingteGrossBuchstabe(Predicate<String> bedingung){
+    return s -> {return bedingung.test(s) ? s.toUpperCase(): s;};
 
 }
 
