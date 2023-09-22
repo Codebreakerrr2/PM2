@@ -1,6 +1,15 @@
 package Streams;
 
 
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -61,7 +70,7 @@ public class Figur implements Comparable<Figur>{
     @Override
     public int compareTo(Figur andererFigur) {
         if(andererFigur==null) throw new IllegalArgumentException("Vergleichsobjekt darf nicht null sein");
-        if(this==andererFigur) return 0;
+        if(this.equals(andererFigur)) return 0;
 
         if(this.lebensPunkte<andererFigur.lebensPunkte) return -1;
         else return 1;
@@ -80,6 +89,28 @@ public class Figur implements Comparable<Figur>{
                 sorted().
                 collect(Collectors.toList());
 
+        List<JSONObject> jsonListe= list.stream().map(f-> {
+            JSONObject figureInJson = new JSONObject();
+            figureInJson.put(f.name, f);
+            return figureInJson;
+        })
+                    .collect(Collectors.toList());
+        JSONArray jsonArray= new JSONArray();
+        jsonListe.forEach(jsonObjekt->jsonArray.put(jsonObjekt));
+        JSONObject wurzel= new JSONObject();
+        wurzel.put("Figuren",jsonArray);
+        System.out.println(wurzel);
+        String name="UbungJson.json";
+        try(FileWriter writer= new FileWriter(new File(name))){
+            wurzel.write(writer);
+            System.out.println(name);
 
+        }
+        catch (FileNotFoundException e){
+            System.out.println("File not found");
+        }
+        catch (IOException e){
+            System.out.println("Fehler beim schreiben in die Datei");
+        }
     }
 }
