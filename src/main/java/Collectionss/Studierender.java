@@ -3,16 +3,23 @@ package Collectionss;
 import java.util.Objects;
 
  class Studierender {
+     public int getAlter() {
+         return alter;
+     }
 
-    private String name;
+     private String name;
     private String nachname;
     private int alter;
     private int martikelNummer;
+     protected Studierender(String name, String nachname, int martikelNummer,int alter) {
+         this.name = name;
+         this.nachname = nachname;
+         this.martikelNummer = martikelNummer;
+         this.alter=alter;
+     }
 
     protected Studierender(String name, String nachname, int martikelNummer) {
-        this.name = name;
-        this.nachname = nachname;
-        this.martikelNummer = martikelNummer;
+      this(name,nachname,martikelNummer,0);
     }
 
     @Override
