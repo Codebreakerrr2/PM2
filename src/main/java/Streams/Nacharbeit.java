@@ -1,7 +1,9 @@
 package Streams;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -20,6 +22,15 @@ public class Nacharbeit {
         List<String> zahlToString= zahlenn.stream().map(String::valueOf).toList();
         zahlToString.forEach(System.out::println);
 
+
+
+try(Scanner scan  = new Scanner(System.in)){
+
+    int zahl=scan.nextInt();
+    System.out.println(zahl);
+}catch(InputMismatchException e){
+    System.out.println("nicht gute formatn "+e);
+}
 
     }
 }
