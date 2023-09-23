@@ -3,14 +3,18 @@ package Collectionss;
 import java.util.Objects;
 
  class Studierender {
+     private int alter;
     private String name;
     private String nachname;
     private int martikelNummer;
-
+     protected Studierender(String name, String nachname, int martikelNummer,int alter) {
+         this.name = name;
+         this.nachname = nachname;
+         this.martikelNummer = martikelNummer;
+         this.alter=alter;
+     }
     protected Studierender(String name, String nachname, int martikelNummer) {
-        this.name = name;
-        this.nachname = nachname;
-        this.martikelNummer = martikelNummer;
+       this(name,nachname,martikelNummer,-1);
     }
 
     @Override
@@ -34,7 +38,21 @@ import java.util.Objects;
         return name;
     }
 
-    protected String getNachname() {
+     public int getAlter() {
+         return alter;
+     }
+
+     protected String getNachname() {
         return nachname;
     }
-}
+
+     @Override
+     public String toString() {
+         return "Studierender{" +
+                 "alter=" + alter +
+                 ", name='" + name + '\'' +
+                 ", nachname='" + nachname + '\'' +
+                 ", martikelNummer=" + martikelNummer +
+                 '}';
+     }
+ }

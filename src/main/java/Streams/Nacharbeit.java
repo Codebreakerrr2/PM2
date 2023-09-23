@@ -9,7 +9,7 @@ public class Nacharbeit {
        Stream.iterate('a',(buchstabee)-> {
             return (char)(buchstabee+1);
         }).limit('z'-'a'+1).forEach(System.out::println);
-        var erstesZeichenExtrahieren= text-> text.charAt(0);
+
 
     }
 }
