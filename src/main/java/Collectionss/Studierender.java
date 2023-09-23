@@ -3,8 +3,10 @@ package Collectionss;
 import java.util.Objects;
 
  class Studierender {
+
     private String name;
     private String nachname;
+    private int alter;
     private int martikelNummer;
 
     protected Studierender(String name, String nachname, int martikelNummer) {
