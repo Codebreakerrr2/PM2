@@ -30,14 +30,14 @@ public synchronized void kisteAnliefern(String kistenID){
         if(!hatPlatzFrei()){
            try{
             this.wait();
-               System.err.println("Ging In Warte Schleife Thread: "+Thread.currentThread().getName());
+               System.err.println("Ging In Warte Schleife Thread in Anliferung: "+Thread.currentThread().getName());
         }   catch (InterruptedException e){
                Thread.currentThread().interrupt();
            }
         }
         else{
             platzImLager.add(kistenID);
-            System.err.println("Kiste mit ID: "+kistenID+" wurde gelagert");
+            System.err.println("Kiste mit ID: "+kistenID+" wurde gelagert mit Thread: "+Thread.currentThread().getName());
             Random rand= new Random();
 
             try{
@@ -46,7 +46,7 @@ public synchronized void kisteAnliefern(String kistenID){
                 Thread.currentThread().interrupt();
             }
             this.notifyAll();
-            System.err.println("Alle wurden geweckt!");
+            System.err.println("Alle wurden geweckt! für Anlieferung");
         }
 
 
@@ -61,14 +61,14 @@ public synchronized void kisteAnliefern(String kistenID){
                 if(platzImLager.isEmpty()){
                     try{
                         this.wait();
-                        System.err.println("Ging In Warte Schleife Thread: "+Thread.currentThread().getName());
+                        System.err.println("Ging In Warte Schleife Thread beim Abholen: "+Thread.currentThread().getName());
                     }   catch (InterruptedException e){
                         Thread.currentThread().interrupt();
                     }
                 }
                 else {
                     String kiste= platzImLager.get(0);
-                    System.err.println("Kiste: "+platzImLager.get(0)+" wurde entfernt");
+                    System.err.println("Kiste: "+platzImLager.get(0)+" wurde entfernt mit Thread: "+Thread.currentThread().getName());
                     platzImLager.remove(0);
                     Random rand= new Random();
 
@@ -78,7 +78,7 @@ public synchronized void kisteAnliefern(String kistenID){
                         Thread.currentThread().interrupt();
                     }
                     this.notifyAll();
-                    System.err.println("Alle wurden geweckt!");
+                    System.err.println("Alle wurden geweckt! für Abholung");
                     return kiste;
                 }
                 return "Code erreicht das nie!";

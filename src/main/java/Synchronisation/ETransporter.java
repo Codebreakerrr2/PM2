@@ -6,7 +6,8 @@ import java.util.Random;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
-public class ETransporter extends Thread{
+public class ETransporter {
+    private Thread thread;
     private boolean threadKontroller=true;
     private Lagerhaus lagerhaus;
     private Supplier<String> IDgenerator;
@@ -57,7 +58,7 @@ return stringBuchstaben+zahlen;
             System.err.println("ETransporter ist aus");
 
         };
-        Thread thread= new Thread(task);
+         thread= new Thread(task);
         return thread;
     }
     /**
@@ -71,7 +72,7 @@ return stringBuchstaben+zahlen;
             }
             System.err.println("ETransporter ist aus");
         };
-        Thread thread= new Thread(task);
+         thread= new Thread(task);
         return thread;
     }
     public void transporterOn(){
