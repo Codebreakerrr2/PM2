@@ -3,6 +3,8 @@ package genericss;
 import com.google.common.base.Preconditions;
 import org.checkerframework.checker.units.qual.K;
 
+import java.util.Objects;
+
 /**
  * Die Klasse stellt einen Knoten dar, der eventuell in einer Baumhierarchie sitzt.
  * Der Knoten hat 3 Kindknoten.
@@ -47,5 +49,18 @@ public class Knoten<T> {
 
     public T getElement() {
         return element;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Knoten<?> knoten = (Knoten<?>) o;
+        return Objects.equals(element, knoten.element);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(element);
     }
 }

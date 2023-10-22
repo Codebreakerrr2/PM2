@@ -3,6 +3,9 @@ package genericss;
 import com.google.common.base.Preconditions;
 import org.checkerframework.framework.qual.StubFiles;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Baumhelper {
 
     private static int anzahlKnoten(Knoten aktuellerKnoten){
@@ -67,6 +70,50 @@ return -1;
     public static int tiefeVon(Knoten knoten,Baum <?> baum){
        return tiefenVon(knoten,baum.knoten,0);
     }
+
+/**
+ * Die Methode führt einen BFS durch und findet den kurzesten Weg von Wurzelknoten zum Zielknoten.
+ * Falls Zielknoten nicht im Baum ist, dann gibt sie -1 aus.
+ * */
+    public static int kurzesterWeg(Baum<?> baum,Knoten target){
+      return  kurzesterWeg(baum.knoten,target);
+
+    }
+    /**
+     * Die Hilfsmethode führt einen BFS und gibt den kürzesten Weg von Startknoten zum Zielknoten.
+     * Falls die Methode den Zielknoten nicht findet, gibt sie -1 aus.
+     * */
+    private static int kurzesterWeg(Knoten start,Knoten target){
+        Preconditions.checkNotNull(start);
+        Preconditions.checkNotNull(target);
+        Queue<Tupel> queue=  new LinkedList<>();
+        Tupel startKnoten= new Tupel(start,0);
+        queue.offer(startKnoten);
+        int laenge=0;
+
+        while(!queue.isEmpty()){
+
+
+            Tupel aktuell= queue.poll();
+            if( aktuell.objekt.equals(target)){
+                return (int)aktuell.getKennung();
+            }
+            else{
+                if(aktuell.objekt.kind1!=null) queue.offer(new Tupel(aktuell.objekt.kind1,laenge+1));
+                if(aktuell.objekt.kind2!=null)  queue.offer(new Tupel(aktuell.objekt.kind2,laenge+1));
+                if(aktuell.objekt.kind3!=null)  queue.offer(new Tupel(aktuell.objekt.kind3,laenge+1));
+                laenge++;
+
+            }
+
+
+        }
+        return -1;
+
+
+    }
+
+
 }
 
 
